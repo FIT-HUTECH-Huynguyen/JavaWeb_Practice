@@ -97,8 +97,6 @@ public class ManageVehicle {
               .map(Vehicle::getLicensePlate)
               .filter(plate -> plate.matches("([0-9])\\1{3}.*"))
               .forEach(System.out::println);
-
-
     }
 
 }
