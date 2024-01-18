@@ -17,7 +17,7 @@ public class Lab122 {
         manageVehicle.findBestPlate();
         Date date1 = new Date(2020,10,20);
         Date date2 = new Date (2024,1,2);
-        System.out.println(manageVehicle.getTime(date1,date2));
+        System.out.println(manageVehicle.getTimeUsed(date1,date2));
         manageVehicle.periodicRegistration();
     }
 }

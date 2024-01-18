@@ -133,7 +133,7 @@ public class ManageVehicle {
         return year + (double) month /12;
     }
 
-    public Date getTimeRegistration(){
+    public void getTimeRegistration(){
 
     }
     public void carRegistrationFee(){
