@@ -1,5 +1,7 @@
 package fit.hutech.core.lab122;
 
+import java.sql.Date;
+
 public class Car extends Vehicle{
     private int numberOfSeats;
     private boolean isRegistration;
@@ -14,7 +16,7 @@ public class Car extends Vehicle{
         this.numberOfSeats = numberOfSeats;
         this.isRegistration = isRegistration;
     }
-    public Car(int numberOfSeats, boolean isRegistration, String yearOfManufacture, String licensePlate){
+    public Car(int numberOfSeats, boolean isRegistration, Date yearOfManufacture, String licensePlate){
         super(yearOfManufacture, licensePlate);
         this.numberOfSeats = numberOfSeats;
         this.isRegistration = isRegistration;

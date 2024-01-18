@@ -1,0 +1,40 @@
+Year of manufacture : 10/01/2010
+License plate : 47C 99354
+Payload : 1000
+
+Year of manufacture : 19/02/2022
+License plate : 43C 33346
+Payload : 2000
+
+Year of manufacture : 10/09/2000
+License plate : 48C 34239
+Payload : 1000
+
+Year of manufacture : 02/05/2013
+License plate : 49C 34123
+Payload : 2000
+
+Year of manufacture : 12/12/2023
+License plate : 59C 35123
+Payload : 3000
+
+Year of manufacture : 02/01/2023
+License plate : 59A 19923
+Number of seats : 16
+Registration : true
+
+Year of manufacture : 04/02/2021
+License plate : 59A 19924
+Number of seats : 4
+Registration : false
+
+Year of manufacture : 03/06/2020
+License plate : 59A 19925
+Number of seats : 7
+Registration : true
+
+Year of manufacture : 10/01/2023
+License plate : 59A 9999
+Number of seats : 5
+Registration : false
+
