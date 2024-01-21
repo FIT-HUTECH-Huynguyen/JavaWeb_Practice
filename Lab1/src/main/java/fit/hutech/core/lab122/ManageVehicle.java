@@ -121,6 +121,7 @@ public class ManageVehicle {
         // set condition
         if(manufactureDay > nowDay){
             nowMonth--;
+            nowDay += 30;
         }
         if(manufactureMonth > nowMonth){
             nowYear--;
@@ -129,12 +130,40 @@ public class ManageVehicle {
 
         int year = nowYear - manufactureYear;
         int month = nowMonth - manufactureMonth;
+        int day = nowDay - manufactureDay;
 
         return year + (double) month /12;
     }
 
-    public void getTimeRegistration(){
+    public void getTimeRegistration(double timeUsed, double rate, Date nowTime ){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(nowTime);
+        int year = calendar.get(Calendar.YEAR) - 1900;
+        int month = calendar.get(Calendar.MONTH) + 1 ;
+        int day = calendar.get(Calendar.DATE);
 
+        double nowValue = year + (double) month/12 + (double) day/365;
+
+        double timeRegistration = timeUsed / rate;
+        double timeComming = timeRegistration % (1/rate);
+
+        if(timeComming == 0 || timeComming == 0.5){
+            nowValue += 0.5;
+        }
+        else {
+            if (timeComming > 0.5) {
+                double lack = timeComming - 0.5;
+                nowValue += lack;
+            } else {
+                double lack = 0.5 - timeComming;
+                nowValue += lack;
+            }
+        }
+        year = (int) nowValue ;
+        month = (int) ((nowValue - year) * 12) ;
+        day = (int) (((nowValue - year) * 12 - month) * 30);
+
+        System.out.println("Time registration : " + day + "/" + month + "/" + year);
     }
     public void carRegistrationFee(){
         Stream<Car> cars = vehicles.stream()
@@ -148,18 +177,27 @@ public class ManageVehicle {
                     if(car.isRegistration()){
                         rate = 1;
                         outputWithFee(car,timeUsed,240000,rate);
+                        getTimeRegistration(timeUsed,rate,now);
+                        System.out.println();
                     }else{
                         rate = 2;
                         outputWithFee(car,timeUsed,240000,rate);
+                        getTimeRegistration(timeUsed,rate,now);
+                        System.out.println();
+
                     }
                 }
                 else{
                     rate = 1;
                     classificationCarByNumberSeat(car,timeUsed,rate);
+                    getTimeRegistration(timeUsed,rate,now);
+                    System.out.println();
                 }
             }else{
                 rate = 0.5;
                 classificationCarByNumberSeat(car,timeUsed,rate);
+                getTimeRegistration(timeUsed,rate,now);
+                System.out.println();
             }
         });
     }
@@ -174,9 +212,13 @@ public class ManageVehicle {
             if( timeUsed <= 20){
                 rate = 0.5;
                 classificationTruckByPayload(truck,timeUsed,rate);
+                getTimeRegistration(timeUsed,rate,now);
+                System.out.println();
             }else{
                 rate = 0.25;
                 classificationTruckByPayload(truck,timeUsed,rate);
+                getTimeRegistration(timeUsed,rate,now);
+                System.out.println();
             }
         });
     }
@@ -191,7 +233,7 @@ public class ManageVehicle {
                 """.formatted(timeUsed,((int)(timeUsed/rate))
                 ,rate,price,((int)(timeUsed / rate)) * price);
         System.out.print(vehicle.output());
-        System.out.println(msg);
+        System.out.print(msg);
     }
 
     public void classificationTruckByPayload(Truck truck , double timeUsed , double rate){
