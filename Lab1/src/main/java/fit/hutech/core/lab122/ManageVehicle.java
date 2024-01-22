@@ -132,7 +132,7 @@ public class ManageVehicle {
         int month = nowMonth - manufactureMonth;
         int day = nowDay - manufactureDay;
 
-        return year + (double) month /12;
+        return year + (double) month /12 + (double) day / 365 ;
     }
 
     public void getTimeRegistration(double timeUsed, double rate, Date nowTime ){
